@@ -51,39 +51,8 @@ function Contact() {
     <section id="contact" className="section-container">
       <p className="section-kicker">{t("contact.kicker")}</p>
       <h2 className="section-heading">{t("contact.heading")}</h2>
-      <div className="mt-10 grid gap-8 lg:grid-cols-[0.9fr_1.1fr]">
-        <div className="glass-card p-6 sm:p-8">
-          <div className="flex flex-wrap gap-4">
-            {contactItems.map(({ icon: Icon, iconText, label, labelKey, value, valueKey, href }) => {
-              const itemLabel = labelKey ? t(labelKey) : label;
-              const itemValue = valueKey ? t(valueKey) : value;
-              const content = (
-                <span className="inline-flex h-14 w-14 items-center justify-center rounded-2xl border border-white/10 bg-blue-300/10 text-blue-300 transition duration-300 hover:-translate-y-1 hover:border-blue-300/50 hover:bg-blue-300/15">
-                  {Icon ? <Icon size={24} /> : <span className="text-sm font-bold">{iconText}</span>}
-                </span>
-              );
-
-              return href ? (
-                <a
-                  key={itemLabel}
-                  href={href}
-                  target={href.startsWith("http") ? "_blank" : undefined}
-                  rel="noreferrer"
-                  aria-label={`${itemLabel}: ${itemValue}`}
-                  title={itemValue}
-                >
-                  {content}
-                </a>
-              ) : (
-                <span key={itemLabel} aria-label={`${itemLabel}: ${itemValue}`} title={itemValue}>
-                  {content}
-                </span>
-              );
-            })}
-          </div>
-        </div>
-
-        <form className="glass-card p-6 sm:p-8" onSubmit={handleSubmit}>
+      <div className="mx-auto mt-10 max-w-5xl">
+        <form className="glass-card p-6 sm:p-8 lg:p-10" onSubmit={handleSubmit}>
           <div className="grid gap-5 sm:grid-cols-2">
             <label className="block">
               <span className="mb-2 block text-sm font-medium text-slate-200">{t("contact.nameLabel")}</span>
@@ -134,6 +103,34 @@ function Contact() {
             </p>
           )}
         </form>
+        <div className="mt-6 flex flex-wrap justify-center gap-4">
+          {contactItems.map(({ icon: Icon, iconText, label, labelKey, value, valueKey, href }) => {
+            const itemLabel = labelKey ? t(labelKey) : label;
+            const itemValue = valueKey ? t(valueKey) : value;
+            const content = (
+              <span className="inline-flex h-14 w-14 items-center justify-center rounded-2xl border border-white/10 bg-blue-300/10 text-blue-300 transition duration-300 hover:-translate-y-1 hover:border-blue-300/50 hover:bg-blue-300/15">
+                {Icon ? <Icon size={24} /> : <span className="text-sm font-bold">{iconText}</span>}
+              </span>
+            );
+
+            return href ? (
+              <a
+                key={itemLabel}
+                href={href}
+                target={href.startsWith("http") ? "_blank" : undefined}
+                rel="noreferrer"
+                aria-label={`${itemLabel}: ${itemValue}`}
+                title={itemValue}
+              >
+                {content}
+              </a>
+            ) : (
+              <span key={itemLabel} aria-label={`${itemLabel}: ${itemValue}`} title={itemValue}>
+                {content}
+              </span>
+            );
+          })}
+        </div>
       </div>
     </section>
   );
