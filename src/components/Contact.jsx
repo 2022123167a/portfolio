@@ -50,28 +50,33 @@ function Contact() {
       <p className="section-kicker">Contact</p>
       <h2 className="section-heading">Let&apos;s Build Something</h2>
       <div className="mt-10 grid gap-8 lg:grid-cols-[0.9fr_1.1fr]">
-        <div className="space-y-4">
+        <div className="glass-card p-6 sm:p-8">
+          <div className="flex flex-wrap gap-4">
           {contactItems.map(({ icon: Icon, iconText, label, value, href }) => {
             const content = (
-              <div className="glass-card hover-lift flex items-center gap-4 p-4">
-                <span className="inline-flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-blue-300/10 text-blue-300">
-                  {Icon ? <Icon size={22} /> : <span className="text-sm font-bold">{iconText}</span>}
-                </span>
-                <span>
-                  <span className="block text-sm text-slate-400">{label}</span>
-                  <span className="block break-all font-medium text-slate-100">{value}</span>
-                </span>
-              </div>
+              <span className="inline-flex h-14 w-14 items-center justify-center rounded-2xl border border-white/10 bg-blue-300/10 text-blue-300 transition duration-300 hover:-translate-y-1 hover:border-blue-300/50 hover:bg-blue-300/15">
+                {Icon ? <Icon size={24} /> : <span className="text-sm font-bold">{iconText}</span>}
+              </span>
             );
 
             return href ? (
-              <a key={label} href={href} target={href.startsWith("http") ? "_blank" : undefined} rel="noreferrer">
+              <a
+                key={label}
+                href={href}
+                target={href.startsWith("http") ? "_blank" : undefined}
+                rel="noreferrer"
+                aria-label={`${label}: ${value}`}
+                title={value}
+              >
                 {content}
               </a>
             ) : (
-              <div key={label}>{content}</div>
+              <span key={label} aria-label={`${label}: ${value}`} title={value}>
+                {content}
+              </span>
             );
           })}
+          </div>
         </div>
 
         <form className="glass-card p-6 sm:p-8" onSubmit={handleSubmit}>
