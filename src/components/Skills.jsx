@@ -1,27 +1,13 @@
-const skillGroups = [
-  { title: "Programming Languages", skills: ["Java", "C#", "JavaScript", "TypeScript", "Python"] },
-  { title: "Frontend", skills: ["Angular", "React", "HTML", "CSS", "Tailwind CSS", "Responsive Design"] },
-  { title: "Backend", skills: ["Node.js", "REST APIs"] },
-  { title: "Database", skills: ["MongoDB", "SQL"] },
-  { title: "Tools & Technologies", skills: ["Git", "GitHub", "Flet", "Raspberry Pi", "OpenCV"] },
-  {
-    title: "Concepts",
-    skills: [
-      "API Integration",
-      "Authentication",
-      "Runtime Rendering",
-      "UI Rendering",
-      "State Management",
-      "JSON-based UI Systems",
-    ],
-  },
-];
+import { useTranslation } from "react-i18next";
 
 function Skills() {
+  const { t } = useTranslation();
+  const skillGroups = t("skills.groups", { returnObjects: true });
+
   return (
     <section id="skills" className="section-container">
-      <p className="section-kicker">Skills</p>
-      <h2 className="section-heading">Technical Toolkit</h2>
+      <p className="section-kicker">{t("skills.kicker")}</p>
+      <h2 className="section-heading">{t("skills.heading")}</h2>
       <div className="mt-10 grid gap-5 md:grid-cols-2 xl:grid-cols-3">
         {skillGroups.map((group) => (
           <article key={group.title} className="glass-card hover-lift p-6">
