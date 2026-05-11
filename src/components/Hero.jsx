@@ -1,7 +1,7 @@
 import { Download, Mail, MoveRight } from "lucide-react";
 import { useState } from "react";
+import profileImage from "../assets/profile.jpg";
 
-const profileImage = "/src/assets/profile.jpg";
 const githubUrl = "https://github.com/2022123167a";
 const linkedinUrl = "https://linkedin.com/in/ahmedsherifdev";
 const cvUrl = "/Ahmed_Sherif_CV.pdf"; // Replace public/Ahmed_Sherif_CV.pdf with your final CV file.
